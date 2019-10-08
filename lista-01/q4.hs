@@ -2,8 +2,7 @@ import Data.List
 
 data Tree a = Nil
             | Node a (Tree a) (Tree a)
-               
-
+              
 newtype Set a = Set ( Tree a )
 
 empty :: Set a
@@ -21,6 +20,9 @@ instance Ord a => Eq (Tree a) where
     _ == Nil     = False
     Node x xl xr == Node y yl yr = prepSet ( treeToList ( Node x xl xr ) ) == prepSet ( treeToList ( Node y yl yr ) )
 
+instance Ord a => Ord (Tree a) where
+    Node x xl xr <= Node y yl yr = prepSet ( treeToList ( Node x xl xr ) ) <= prepSet ( treeToList ( Node y yl yr ) )
+
 -- Removes the duplicate elements
 prepSet :: Ord a => [ a ] -> [ a ]
 prepSet x = map head . group . sort $ x
@@ -35,6 +37,9 @@ treeToList ( Node x xl xr ) = treeToList xl ++ [ x ] ++ treeToList xr
 -- Returns if a given set is equal to another set
 eqSet :: Ord a => Set a -> Set a -> Bool
 eqSet ( Set xs ) ( Set ys ) = xs == ys
+
+leqSet :: Ord a => Set a -> Set a -> Bool
+leqSet ( Set xs ) ( Set ys ) = xs <= ys
 
 -- Verifies if a element is part of a tree
 memSet :: Ord a => Set a -> a -> Bool 
