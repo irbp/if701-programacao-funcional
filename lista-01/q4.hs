@@ -38,6 +38,7 @@ treeToList ( Node x xl xr ) = treeToList xl ++ [ x ] ++ treeToList xr
 eqSet :: Ord a => Set a -> Set a -> Bool
 eqSet ( Set xs ) ( Set ys ) = xs == ys
 
+-- Returns if a given set is less or equal to another set
 leqSet :: Ord a => Set a -> Set a -> Bool
 leqSet ( Set xs ) ( Set ys ) = xs <= ys
 
