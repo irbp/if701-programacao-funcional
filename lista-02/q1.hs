@@ -60,7 +60,7 @@ prop_LeavesFullBT tree =
     not (isEmptyTree tree) ==> totNodes == (2 * totLeaves - 1)
         where totNodes = getTreeTotNodes tree
               totLeaves = getTreeTotLeaves tree
-
+-- TODO verificar se uma árvore com apenas um nó é uma árvore balanceada
 prop_HeightBalancedTree :: Tree a -> Property
 prop_HeightBalancedTree tree =
     not (isEmptyTree tree) ==> height == logLeaves && logLeaves == logHalfNodes && logHalfNodes == logNodes
