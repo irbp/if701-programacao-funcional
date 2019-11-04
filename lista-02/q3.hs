@@ -14,7 +14,9 @@ genSet size
     | otherwise = return empty
 
 prop_Search :: (Ord a) => Relation a -> a -> Bool
-prop_Search graph elem = sort (depthFirst graph elem) == sort (breadthFirst graph elem)
+prop_Search graph elem =
+    sort (depthFirst graph elem) == sort (breadthFirst graph elem)
 
 prop_Search2 :: (Ord a) => Relation a -> a -> Bool
-prop_Search2 graph elem = head (depthFirst graph elem) == head (breadthFirst graph elem)
+prop_Search2 graph elem =
+    head (depthFirst graph elem) == head (breadthFirst graph elem)

@@ -34,12 +34,9 @@ instance Eq a => Eq (Set a) where
 instance Ord a => Ord (Set a) where
   (<=) = leqSet
 
-instance Show a => Show (Set a) where
-    show = show . flatten
-
 -- The implementation.						
 -- 				
-newtype Set a = Set [a]
+newtype Set a = Set [a] deriving (Show)
 
 empty :: Set a
 empty  = Set []
